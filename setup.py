@@ -1,6 +1,8 @@
-import os
 from glob import glob
+import os
+
 from setuptools import find_packages, setup
+
 
 package_name = 'two_wheel'
 
@@ -9,16 +11,18 @@ setup(
     version='0.0.0',
     packages=find_packages(exclude=['test']),
     data_files=[
-        ('share/ament_index/resource_index/packages',
-            ['resource/' + package_name]),
+        (
+            'share/ament_index/resource_index/packages',
+            ['resource/' + package_name],
+        ),
         ('share/' + package_name, ['package.xml']),
-        (os.path.join('share', 'two_wheel', 'launch'), glob('launch/*.py'))
+        (os.path.join('share', package_name, 'launch'), glob('launch/*.py')),
     ],
     install_requires=['setuptools'],
     zip_safe=True,
     maintainer='arslanganteng',
     maintainer_email='arslanganteng@todo.todo',
-    description='TODO: Package description',
+    description='ROS 2 nodes for a two-wheel drive robot stack.',
     license='TODO: License declaration',
     extras_require={
         'test': [
@@ -27,11 +31,11 @@ setup(
     },
     entry_points={
         'console_scripts': [
-            "keyboard = two_wheel.keyboard:main",
-            "mode_manager = two_wheel.mode_manager:main",
-            "safety = two_wheel.safety:main",
-            "motor_bridge = two_wheel.motor_bridge:main",
-            "socket = two_wheel.socket:main"
+            'keyboard = two_wheel.keyboard:main',
+            'mode_manager = two_wheel.mode_manager:main',
+            'safety = two_wheel.safety:main',
+            'motor_bridge = two_wheel.motor_bridge:main',
+            'socket = two_wheel.socket:main',
         ],
     },
 )
